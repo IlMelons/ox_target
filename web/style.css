@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --color-default: #cfd2da;
+  --color-default: #7d12ff;
   --color-hover: white;
 }
 
@@ -23,12 +23,13 @@ p {
 }
 
 #eye {
+  content: "\F33E";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 22pt;
-  fill: black;
+  font-size: 1.5vh;
+  fill: var(--color-default);
 }
 
 .eye-hover {
@@ -37,8 +38,8 @@ p {
 
 #options-wrapper {
   position: absolute;
-  top: calc(48.4%);
-  left: calc(50% + 18pt);
+  top: calc(48.5%);
+  left: calc(50% + 30pt);
 }
 
 .option-container {
@@ -48,13 +49,12 @@ p {
   justify-content: flex-start;
   align-items: center;
   font-family: "Nunito";
-  background: linear-gradient(
-    90deg,
-    rgba(20, 20, 20, 0.7) 0%,
-    rgba(20, 20, 20, 0.6) 66%,
-    rgba(47, 48, 53, 0) 100%
-  );
-  font-size: 11pt;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 0.1px;
+  border-color: rgba(100, 100, 100, 0.808);
+  background: radial-gradient(circle, #25262bc5 0%, #25262bce 100%);
+  font-size: 10pt;
   line-height: 22pt;
   vertical-align: middle;
   margin: 2pt;
@@ -63,19 +63,32 @@ p {
   scale: 1;
   height: 22pt;
   width: 150pt;
+  position: relative;
+  overflow: hidden;
   top: 0;
 }
 
 .option-container:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(30, 30, 30, 0.7) 0%,
-    rgba(30, 30, 30, 0.6) 66%,
-    rgba(57, 58, 63, 0) 100%
-  );
-  transform-origin: left top;
   color: var(--color-hover);
-  margin-left: 4pt;
+  border-color: #7d12ff9d;
+  box-shadow: inset 0px 0px 31px #7d12ff42;
+}
+
+.option-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  transition: transform 1.2s ease;
+}
+
+.option-container:hover::before {
+  left: 150%;
+  transition: left 1.22s ease;
 }
 
 .option-icon {
@@ -88,4 +101,21 @@ p {
 
 .option-label {
   font-weight: 500;
+  color: #fff;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #7d12ff) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #ffffff) brightness(2.5);
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #7d12ff) brightness(1);
+  }
+}
+
+#eyeSvg {
+  animation: glow 1.5s infinite;
 }
