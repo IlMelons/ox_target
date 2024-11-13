@@ -28,7 +28,7 @@ function utils.raycastFromCamera(flag)
 end
 
 function utils.getTexture()
-    return lib.requestStreamedTextureDict('shared'), 'emptydot_32'
+    return lib.requestStreamedTextureDict('melons_target'), 'melons_dot'
 end
 
 -- SetDrawOrigin is limited to 32 calls per frame. Set as 0 to disable.
